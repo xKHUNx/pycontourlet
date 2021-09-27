@@ -22,7 +22,7 @@ from numpy import *
 from scipy import signal
 
 
-def modulate2(x, type, center):
+def modulate2(x, type_, center):
     """ MODULATE2 2D modulation
     y = modulate2(x, type, [center])
 
@@ -43,18 +43,18 @@ def modulate2(x, type, center):
 
     #o = floor(s / 2) + 1 + center
     o = floor(s / 2.0) + center
-    n1 = array([s[0][0]]) - o[0]
-    n2 = array([s[0][1]]) - o[1]
+    n1 = array([s[0][0]]) - o[0][0]
+    n2 = array([s[0][1]]) - o[0][1]
 
-    if str.lower(type[0]) == 'r':
+    if str.lower(type_[0]) == 'r':
         m1 = (-1)**n1
-        y = x * tile(m1.conj().T, s[1])
+        y = x * tile(m1.conj().T, s[0][1])
 
-    elif str.lower(type[0]) == 'c':
+    elif str.lower(type_[0]) == 'c':
         m2 = (-1)**n2
         y = x * tile(m2, s[0])
 
-    elif str.lower(type[0]) == 'b':
+    elif str.lower(type_[0]) == 'b':
         m1 = (-1)**n1
         m2 = (-1)**n2
         m = m1.conj().T * m2

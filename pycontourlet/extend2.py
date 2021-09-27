@@ -65,7 +65,9 @@ def extend2(x, ru, rd, cl, cr, extmod):
         y = y[I, :]
         return y
     elif extmod == 'qper_col':
-        cx2 = round(cx / 2.0)
+        cx2 = int(round(cx / 2.0))
+#         print("(extend2.py) c_[x[rx - ru:rx, cx2:cx], x[rx - ru:rx, 0:cx2]]", c_[x[rx - ru:rx, cx2:cx], x[rx - ru:rx, 0:cx2]])
+        
         y = r_[c_[x[rx - ru:rx, cx2:cx], x[rx - ru:rx, 0:cx2]],
                x, c_[x[0:rd, cx2:cx], x[0:rd, 0:cx2]]]
 

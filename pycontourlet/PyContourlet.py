@@ -19,9 +19,10 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from scipy import weave, signal
+from scipy import signal
 from scipy.fftpack import fftshift
-from scipy.weave import converters
+import weave
+from weave import converters
 from matplotlib.cbook import is_string_like
 import pdb
 # Laplacian Pyramid

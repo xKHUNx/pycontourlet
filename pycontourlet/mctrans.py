@@ -32,7 +32,7 @@ def mctrans(b, t):
 
     # Convert the 1-D filter b to SUM_n a(n) cos(wn) form
     #n = (len(b)-1) / 2
-    n = (len(b) - 1) / 2.0
+    n = int((len(b) - 1) / 2.0)
     if b.ndim < 2:
         b = fftshift(b[::-1])[::-1]  # inverse fftshift
     else:

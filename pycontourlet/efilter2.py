@@ -57,8 +57,11 @@ def efilter2(x, f, extmod, shift):
     else:
         sf = (array(f.shape) - 1) / 2.0
 
-    xext = extend2(x, floor(sf[0]) + shift[0][0], ceil(sf[0]) - shift[0][0],
-                   floor(sf[1]) + shift[1][0], ceil(sf[1]) - shift[1][0], extmod)
+    ru = int(floor(sf[0]) + shift[0][0])
+    rd = int(ceil(sf[0]) - shift[0][0])
+    cl = int(floor(sf[1]) + shift[1][0])
+    cr = int(ceil(sf[1]) - shift[1][0])
+    xext = extend2(x, ru, rd, cl, cr, extmod)
 
     # Convolution and keep the central part that has the size as the input
     if f.ndim < 2:

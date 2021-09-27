@@ -35,7 +35,7 @@ def ldfilter(fname):
     elif fname == "pkva6":
         v = array([0.6261, -0.1794, 0.0688])
     else:
-        print "Unrecognized ladder structure filter name"
+        print("Unrecognized ladder structure filter name")
     # Symmetric impulse response
     f = hstack((v[::-1], v))
     return f

@@ -19,7 +19,10 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-
+from .pfilters import pfilters
+from .dfbdec import dfbdec
+from .lpdec import lpdec
+from .wfb2dec import wfb2dec
 
 def pdfbdec(x, pfilt, dfilt, nlevs):
     """'function y = pdfbdec(x, pfilt, dfilt, nlevs)

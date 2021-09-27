@@ -81,7 +81,8 @@ def wfb2dec(x, h, g):
 
 
 def rowfiltering(x, f, ext1):
-    ext2 = len(f) - ext1 - 1
+    ext1 = int(ext1)
+    ext2 = int(len(f) - ext1 - 1)
     x = hstack((x[:, -ext1::], x, x[:, 0:ext2]))
     y = signal.convolve(x.conj().T, f[:, newaxis], 'valid').conj().T
     return y

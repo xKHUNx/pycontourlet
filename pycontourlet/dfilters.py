@@ -19,7 +19,7 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from scipy.signal.filter_design import firwin
+from scipy.signal import firwin
 from mctrans import *
 from modulate2 import *
 from ldfilter import *

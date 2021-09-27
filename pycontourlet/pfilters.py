@@ -19,7 +19,7 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from ldfilter import *
+from .ldfilter import *
 
 
 def pfilters(fname):
@@ -77,7 +77,7 @@ def pfilters(fname):
         n = float(lf) / 2
 
         if n != floor(n):
-            print "The input allpass filter must be even length"
+            print("The input allpass filter must be even length")
 
         # beta(z^2)
         beta2 = zeros(2 * lf - 1)

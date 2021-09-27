@@ -47,7 +47,7 @@ def dfbdec(x, fname, n):
     See also: DFBREC, FBDEC, DFILTERS"""
 
     if (n != round(n)) or (n < 0):
-        print 'Number of decomposition levels must be a non-negative integer'
+        print('Number of decomposition levels must be a non-negative integer')
 
     if n == 0:
         # No decomposition, simply copy input to output
@@ -100,10 +100,3 @@ def dfbdec(x, fname, n):
     y[2**(n - 1)::] = y[::-1][:2**(n - 1)]
 
     return y
-
-
-x = arange(1, 26).reshape(5, 5)
-pdb.set_trace()
-y = dfbdec(x, 'dmaxflat7', 1)
-z = dfbrec(y, 'dmaxflat7')
-print z
