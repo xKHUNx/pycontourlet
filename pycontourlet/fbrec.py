@@ -19,9 +19,9 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from qup import *
-from efilter2 import *
-from resamp import *
+from .qup import *
+from .efilter2 import *
+from .resamp import *
 
 
 def fbrec(y0, y1, h0, h1, type1, type2, extmod):
@@ -68,7 +68,7 @@ def fbrec(y0, y1, h0, h1, type1, type2, extmod):
         y0 = qup(y0, pqtype[type2], None)
         y1 = qup(y1, pqtype[type2], None)
     else:
-        print'Invalid input type1'
+        print("Invalid input type1")
 
     # Stagger sampling if filter is odd-size
     if all(mod(h1.shape, 2)):

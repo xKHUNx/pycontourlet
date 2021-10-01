@@ -19,10 +19,24 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-import weave
-from weave import converters
-from matplotlib.cbook import is_string_like
-#import time
+import numpy.ma as ma
+
+def is_string_like(obj):
+    """Return True if *obj* looks like a string
+
+    Ported from: https://github.com/pieper/matplotlib/blob/master/lib/matplotlib/cbook.py
+    with modification to adapt to Python3.
+    """
+    if isinstance(obj, (str)): return True
+    # numpy strings are subclass of str, ma strings are not
+    if ma.isMaskedArray(obj):
+        if obj.ndim == 0 and obj.dtype.kind in 'SU':
+            return True
+        else:
+            return False
+    try: obj + ''
+    except: return False
+    return True
 
 def resampc(x, type, shift, extmod):
     """RESAMPC. Resampling along the column
@@ -44,21 +58,19 @@ def resampc(x, type, shift, extmod):
     """
 
     if type != 0 and type != 1:
-        print "The second input (type) must be either 1 or 2"
+        print("The second input (type) must be either 1 or 2")
         return
 
     if is_string_like(extmod) != 1:
-        print 'EXTMOD arg must be a string'
+        print("EXTMOD arg must be a string")
         return
 
     m, n = x.shape
     y = zeros(x.shape)
     s = shift
-    
-    print("(resampc.py) m, n, y, s, extmod", m, n, y, s, extmod)
 
     if extmod == 'per':
-    
+
         for j in range(n):
             # Circular shift in each column
             if type == 0:
@@ -76,75 +88,5 @@ def resampc(x, type, shift, extmod):
                 y[i, j] = x[k, j]
 
                 k += 1
-    
+
     return y
-
-# def resampc(x, type, shift, extmod):
-#     """ RESAMPC	Resampling along the column
-
-#     y = resampc(x, type, shift, extmod)
-
-#     Input:
-#     x:	image that is extendable along the column direction
-#     type:	either 0 or 1 (0 for shuffering down and 1 for up)
-#     shift:	amount of shifts (typically 1)
-#     extmod: extension mode:
-#     'per' 	periodic
-#     'ref1'	reflect about the edge pixels
-#     'ref2'	reflect, doubling the edge pixels
-
-#     Output:
-#     y:	resampled image with:
-#     R1 = [1, shift; 0, 1] or R2 = [1, -shift; 0, 1]"""
-
-#     if type != 0 and type != 1:
-#         print "The second input (type) must be either 1 or 2"
-#         return
-
-#     if is_string_like(extmod) != 1:
-#         print 'EXTMOD arg must be a string'
-#         return
-
-#     m, n = x.shape
-#     y = zeros(x.shape)
-#     s = shift
-
-#     if extmod == 'per':
-#         code = """
-#         int i, j, k;
-#            for (j = 0; j < n; j++){
-# 	    /* Circular shift in each column */
-# 	    if (type == 0)
-# 		k = (s * j) % m;
-# 	    else
-# 		k = (-s * j) % m;
-
-# 	    /* Convert to non-negative mod if needed */
-# 	    if (k < 0)
-# 		k += m;
-
-# 	    for (i = 0; i < m; i++){
-# 		if (k >= m)
-# 		    k -= m;
-
-# 		y(i, j) = x(k, j);
-
-# 		k++;
-# 	    }
-# 	}
-#       """
-#     # call weave
-#     weave.inline(code, ['m', 'n', 'x', 'y', 's', 'type'],
-#                  type_converters=converters.blitz, compiler='gcc')
-#     return y
-
-#x  =  arange(1,26).reshape(5,5).T
-#x = random.rand(4096,4096)
-#type = 2
-#shift  = 1
-#extmod = 'per'
-#tic = time.clock()
-#y = resampc(x, type, shift, extmod)
-#toc = time.clock()
-# print toc - tic
-# print y

@@ -19,7 +19,7 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from resampz import *
+from .resampz import *
 
 
 def qupz(x, type):

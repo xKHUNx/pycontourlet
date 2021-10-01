@@ -19,7 +19,7 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from resamp import *
+from .resamp import *
 
 
 def pdown(x, type, phase):
@@ -71,6 +71,6 @@ def pdown(x, type, phase):
         else:
             y = resamp(x[:, 1::2], 1, None, None)
     else:
-        print 'Invalid argument type'
+        print("Invalid argument type")
 
     return y

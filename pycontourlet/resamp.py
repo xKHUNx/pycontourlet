@@ -18,8 +18,10 @@
 #    with this program; if not, write to the Free Software Foundation, Inc.,
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-from numpy import *
-from resampc import *
+import pyximport
+import numpy as np
+pyximport.install(setup_args={'include_dirs': np.get_include()})
+from .resampc import *
 
 
 def resamp(x, type, shift, extmod):
@@ -67,7 +69,7 @@ def resamp(x, type, shift, extmod):
     elif type == 2 or type == 3:
         y = resampc(x.T, type - 2, shift, extmod).T
     else:
-        print 'The second input (type) must be one of {0, 1, 2, 3}'
+        print("The second input (type) must be one of {0, 1, 2, 3}")
 
     return y
 

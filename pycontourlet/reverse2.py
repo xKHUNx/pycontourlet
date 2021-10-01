@@ -24,5 +24,5 @@ from numpy import *
 def reverse2(x):
     """ REVERSE2   Reverse order of elements in 2-d signal"""
     if x.ndim < 2:
-        print 'Input must be a 2-D matrix.'
+        print("Input must be a 2-D matrix.")
     return x[::-1, ::-1]

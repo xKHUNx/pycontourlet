@@ -19,7 +19,7 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from resamp import *
+from .resamp import *
 
 
 def backsamp(y):
@@ -39,18 +39,18 @@ def backsamp(y):
     n = int(log2(len(y)))
 
     if (n != round(n)) or (n < 1):
-        print 'Input must be a cell vector of dyadic length'
+        print("Input must be a cell vector of dyadic length")
     if n == 1:
         # One level, the decomposition filterbank shoud be Q1r
         # Undo the last resampling (Q1r = R2 * D1 * R3)
-        for k in xrange(0, 2):
+        for k in range(0, 2):
             y[k] = resamp(y[k], 3, None, None)
             y[k][:, 0::2] = resamp(y[k][:, 0::2], 0, None, None)
             y[k][:, 1::2] = resamp(y[k][:, 1::2], 0, None, None)
 
     elif n > 2:
         N = 2**(n - 1)
-        for k in xrange(0, 2**(n - 2)):
+        for k in range(0, 2**(n - 2)):
             shift = 2 * (k + 1) - (2**(n - 2) + 1)
             # The first half channels
             y[2 * k] = resamp(y[2 * k], 2, shift, None)

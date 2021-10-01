@@ -19,7 +19,7 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from extend2 import *
+from .extend2 import *
 from scipy import signal
 
 

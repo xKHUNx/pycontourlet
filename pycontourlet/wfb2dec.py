@@ -47,7 +47,7 @@ def wfb2dec(x, h, g):
     # Shift the center of the filter by 1 if its length is even.
     if mod(len_h1, 2) == 0:
         c = c + 1
-    print c
+    print(c)
     h1 = - g * (-1)**(arange(1, len_h1 + 1) - c)
     ext_h1 = len_h1 - c + 1
 

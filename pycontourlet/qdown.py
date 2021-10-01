@@ -19,7 +19,7 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from resamp import *
+from .resamp import *
 
 
 def qdown(x, type, extmod, phase):
@@ -83,5 +83,5 @@ def qdown(x, type, extmod, phase):
             y = resamp(hstack((z[1:, 1::2].conj().T,
                                z[0:1, 1::2].conj().T)).conj().T, 0, None, None)
     else:
-        print 'Invalid argument type'
+        print("Invalid argument type")
     return y

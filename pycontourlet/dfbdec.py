@@ -19,12 +19,12 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from dfilters import *
-from modulate2 import *
-from ffilters import *
-from backsamp import *
-from fbdec import *
-from dfbrec import *
+from .dfilters import *
+from .modulate2 import *
+from .ffilters import *
+from .backsamp import *
+from .fbdec import *
+from .dfbrec import *
 import pdb
 
 
@@ -79,17 +79,17 @@ def dfbdec(x, fname, n):
         # Fan filters from diamond filters
         f0, f1 = ffilters(h0, h1)
         # Now expand the rest of the tree
-        for l in xrange(3, n + 1):
+        for l in range(3, n + 1):
             # Allocate space for the new subband outputs
             y_old = y[:]
             y = [[None]] * 2**l
             # The first half channels use R1 and R2
-            for k in xrange(0, 2**(l - 2)):
+            for k in range(0, 2**(l - 2)):
                 i = mod(k, 2)
                 y[2 * k], y[2 * k + 1] = fbdec(y_old[k],
                                                f0[i], f1[i], 'pq', i, 'per')
             # The second half channels use R3 and R4
-            for k in xrange(2**(l - 2), 2**(l - 1)):
+            for k in range(2**(l - 2), 2**(l - 1)):
                 i = mod(k, 2) + 2
                 y[2 * k], y[2 * k + 1] = fbdec(y_old[k],
                                                f0[i], f1[i], 'pq', i, 'per')

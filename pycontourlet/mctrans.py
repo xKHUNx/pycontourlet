@@ -48,7 +48,7 @@ def mctrans(b, t):
     rows, cols = array([inset[0]]), array([inset[1]])
     h[rows, cols] = h[rows, cols] + a[0] * P0
 
-    for i in xrange(2, n + 1):
+    for i in range(2, n + 1):
         P2 = 2 * signal.convolve(t, P1)
         rows = rows + inset[0]
         cols = cols + inset[1]

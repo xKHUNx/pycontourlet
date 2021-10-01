@@ -19,7 +19,7 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from resamp import *
+from .resamp import *
 
 
 def qup(x, type, phase):
@@ -96,6 +96,6 @@ def qup(x, type, phase):
             z[0:1, 1::2] = temp[-1::, ::]
         y = resamp(z, 2, None, None)
     else:
-        print 'Invalid argument type'
+        print("Invalid argument type")
 
     return y

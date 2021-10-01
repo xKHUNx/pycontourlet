@@ -75,7 +75,7 @@ def extend2(x, ru, rd, cl, cr, extmod):
         y = y[:, I]
         return y
     else:
-        print 'Invalid input for EXTMOD'
+        print("Invalid input for EXTMOD")
 
 #----------------------------------------------------------------------------#
 # Internal Function(s)

@@ -19,10 +19,10 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from efilter2 import *
-from qdown import *
-from pdown import *
-from dfilters import *
+from .efilter2 import *
+from .qdown import *
+from .pdown import *
+from .dfilters import *
 
 
 def fbdec(x, h0, h1, type1, type2, extmod):
@@ -92,7 +92,7 @@ def fbdec(x, h0, h1, type1, type2, extmod):
         y0 = qdown(y0, pqtype[type2], None, None)
         y1 = qdown(y1, pqtype[type2], None, None)
     else:
-        print 'Invalid input type1'
+        print("Invalid input type1")
 
     return y0, y1
 

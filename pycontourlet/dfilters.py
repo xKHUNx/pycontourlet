@@ -20,12 +20,12 @@
 
 from numpy import *
 from scipy.signal import firwin
-from mctrans import *
-from modulate2 import *
-from ldfilter import *
-from ld2quin import *
-from reverse2 import *
-from dmaxflat import *
+from .mctrans import *
+from .modulate2 import *
+from .ldfilter import *
+from .ld2quin import *
+from .reverse2 import *
+from .dmaxflat import *
 
 
 def dfilters(fname, type):

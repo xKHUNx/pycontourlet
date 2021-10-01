@@ -19,7 +19,7 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from resamp import *
+from .resamp import *
 
 
 def rebacksamp(y):
@@ -39,7 +39,7 @@ def rebacksamp(y):
     n = int(log2(len(y)))
 
     if (n != round(n)) or (n < 1):
-        print 'Input must be a cell vector of dyadic length'
+        print("Input must be a cell vector of dyadic length")
     if n == 1:
         # One level, the reconstruction filterbank shoud be Q1r
         # Redo the first resampling (Q1r = R2 * D1 * R3)

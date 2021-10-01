@@ -19,11 +19,11 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 from numpy import *
-from dfilters import *
-from ffilters import *
-from modulate2 import *
-from fbrec import *
-from rebacksamp import *
+from .dfilters import *
+from .ffilters import *
+from .modulate2 import *
+from .fbrec import *
+from .rebacksamp import *
 
 
 def dfbrec(y, fname):
@@ -43,7 +43,7 @@ def dfbrec(y, fname):
     n = int(log2(len(y)))
 
     if (n != round(n)) or (n < 0):
-        print 'Number of reconstruction levels must be a non-negative integer'
+        print("Number of reconstruction levels must be a non-negative integer")
 
     if n == 0:
         # Simply copy input to output

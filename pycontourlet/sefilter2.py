@@ -20,7 +20,7 @@
 
 from numpy import *
 from scipy import signal
-from extend2 import *
+from .extend2 import *
 
 
 def sefilter2(x, f1, f2, extmod, shift):
